@@ -3,6 +3,7 @@ import Hotel from "../models/Hotel.js";
 
 const router = express.Router();
 
+// CREATE HOTEL 
 router.post("/", async(req,res)=>{
 
     const newHotel = new Hotel(req.body)
@@ -15,6 +16,61 @@ router.post("/", async(req,res)=>{
         res.status(500).json(err)
     }
 })
+
+//UPDTAE HOTEL
+router.put("/:id", async(req,res)=>{
+    try {
+        const updatedHotel= await Hotel.findByIdAndUpdate(req.params.id,
+             {$set: req.body},
+            {new: true})
+        console.log(req.body)
+        res.status(200).json(updatedHotel)      
+    } 
+    catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+
+//DELETE HOTEL
+router.delete("/:id", async(req,res)=>{
+    try {
+       await Hotel.findByIdAndDelete(req.params.id)
+        console.log(req.body)
+        res.status(200).json("Hotel Deleted")      
+    } 
+    catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+//GET HOTEL
+router.get("/:id", async(req,res)=>{
+    try {
+       const searchedHotel = await Hotel.findById(req.params.id)
+        console.log(req.body)
+        res.status(200).json(searchedHotel)      
+    } 
+    catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+//GET ALL HOTELS
+router.get("/", async(req,res)=>{
+    try {
+       const searchedHotels = await Hotel.find(req.params.id)
+        console.log(req.body)
+        res.status(200).json(searchedHotels)      
+    } 
+    catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+
+
+
 
 
 export default router;
