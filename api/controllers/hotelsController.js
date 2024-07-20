@@ -9,7 +9,6 @@ export const createHotel = async (req, res,next)=>{
         res.status(200).json(savedHotel)      
     } 
     catch (err) {
-        // res.status(500).json(err)
         next(err)
     }
 }
@@ -24,7 +23,6 @@ export const updateHotel = async (req, res,next)=>{
         res.status(200).json(updatedHotel)      
     } 
     catch (err) {
-        // res.status(500).json(err)
         next(err)
     }
 }
@@ -38,7 +36,6 @@ export const deleteHotel = async (req, res,next)=>{
          res.status(200).json("Hotel Deleted")      
      } 
      catch (err) {
-        //  res.status(500).json(err)
         next(err)
      }
 }
@@ -52,7 +49,6 @@ export const getHotel = async (req, res,next)=>{
          res.status(200).json(searchedHotel)      
      } 
      catch (err) {
-        //  res.status(500).json(err)
         next(err)
      }
 }
@@ -60,16 +56,12 @@ export const getHotel = async (req, res,next)=>{
 
 //GET ALL HOTEL
 export const getAllHotel = async (req, res,next)=>{
-     // const failed = true
-    // if (failed) return next(createError(401, "Sorry u are not authenticated"))
-
     try {
         const searchedHotels = await Hotel.find()
          console.log(req.body)
          res.status(200).json(searchedHotels)      
      } 
      catch (err) {
-         // res.status(500).json(err)
          next(err)
      }
 }
