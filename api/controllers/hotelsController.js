@@ -16,9 +16,11 @@ export const createHotel = async (req, res,next)=>{
 // UPDATE HOTEL
 export const updateHotel = async (req, res,next)=>{
     try {
-        const updatedHotel= await Hotel.findByIdAndUpdate(req.params.id,
+        const updatedHotel= await Hotel.findByIdAndUpdate(
+            req.params.id,
              {$set: req.body},
-            {new: true})
+            {new: true}
+        )
         console.log(req.body)
         res.status(200).json(updatedHotel)      
     } 
