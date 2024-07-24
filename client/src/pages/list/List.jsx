@@ -1,5 +1,4 @@
 import React from "react";
-
 import "./list.css";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
@@ -20,7 +19,7 @@ const List = () => {
   const [max, setMax] = useState(undefined);
 
   const { data, loading, error, reFetch } = useFetch(
-    `/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}`
+    `http://localhost:1500/api/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}`
   );
 
   const handleClick = () => {

@@ -21,12 +21,24 @@ import Reserve from "../../components/reserve/Reserve";
 
 const Hotel = () => {
   const location = useLocation();
-  const id = location.pathname.split("/")[2];
+  console.log("Home.jsx:: Hotel: " , location)
+  // const id = location.pathname.split("/")[5];
+
+  const pathParts = location.pathname.split("/");
+  console.log("Path parts: ", pathParts);
+  
+  // Assuming the ID is the last part of the URL
+  const id = pathParts[pathParts.length - 1];
+
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
-  const { data, loading, error } = useFetch(`/hotels/find/${id}`);
+  const { data, loading, error } = useFetch(
+    `http://localhost:1500/api/hotels/find/${id}`
+  //  "http://localhost:1500/api/hotels/find/669f568f1a17a37e6438981a"
+  
+  );
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
