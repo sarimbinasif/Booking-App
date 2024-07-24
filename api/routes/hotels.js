@@ -1,7 +1,7 @@
 import express from "express"
 import Hotel from "../models/Hotel.js";
 import { createError } from "../utils/error.js";
-import { countByCity, createHotel, 
+import { countByCity, countByType, createHotel, 
     deleteHotel,
     getAllHotel, 
     getHotel, 
@@ -26,7 +26,7 @@ router.get("/find/:id", getHotel)
 //GET ALL HOTELS
 router.get("/", getAllHotel)
 router.get("/countByCity", countByCity)
-// router.get("/countByType", countByType)
+router.get("/countByType", countByType)
 
 
 export default router;
