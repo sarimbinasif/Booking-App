@@ -1,6 +1,8 @@
 import express from "express"
 import { verifyAdmin } from "../utils/verifyToken.js";
-import { createRoom, 
+import { 
+    updateRoomAvailability,
+    createRoom, 
     deleteRoom,
     getAllRoom, 
     getRoom, 
@@ -13,6 +15,7 @@ router.post("/:hotelid", verifyAdmin, createRoom)
 
 //UPDTAE ROOM
 router.put("/:id", verifyAdmin, updateRoom)
+router.put("/availability/:id", updateRoomAvailability)
 
 
 //DELETE ROOM
