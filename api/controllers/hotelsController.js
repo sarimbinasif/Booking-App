@@ -163,17 +163,30 @@ export const countByType = async (req, res,next)=>{
 }
 
 //GET HOTEL ROOMS
-export const getHotelRooms = async(req,res,next)=>{
-    try {
-        const hotel = await Hotel.findById(req.params.id)
-        const list = await Promise.all(hotel.rooms.map(room=>{
-            return Room.findById(room)
-        }))
+export const getHotelRooms = async (req, res, next) => {
+    // try {
+    //   const hotel = await Hotel.findById(req.params.id);
+    //   const list = await Promise.all(
+    //     hotel.rooms.map((room) => {
+    //       return Room.findById(room);
+    //     })
+    //   );
+    //     res.status(200).json(list)
+    // } catch (err) {
+    //   next(err);
+    // }
 
-        res.status(200).json(list)
-        
-    } catch (err) {
-        next(err)
-        
-    }
-}
+        try {
+          const hotel = await Hotel.findById(req.params.id);
+          const list = await Promise.all(
+            hotel.rooms.map(async (room) => {
+              const roomData = await Room.findById(room);
+              return JSON.parse(JSON.stringify(roomData)); // Ensure the full structure is converted to plain JSON
+            })
+          );
+          console.log(JSON.stringify(list, null, 2)); // Log the full structure of the rooms
+          res.status(200).json(list);
+        } catch (err) {
+          next(err);
+        }
+  };

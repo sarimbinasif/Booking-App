@@ -51,14 +51,15 @@ const Reserve = ({ setOpen, hotelId }) => {
         : selectedRooms.filter((item) => item !== value)
     );
   };
-
+  console.log(selectedRooms)
+  
   const navigate = useNavigate();
 
   const handleClick = async () => {
     try {
       await Promise.all(
         selectedRooms.map((roomId) => {
-          const res = axios.put(`http://localhost:1500/api/rooms/availability/${roomId}`, {
+          const res = axios.put(`http://localhost:1500/api/hotels/rooms/availability/${roomId}`, {
             dates: alldates,
           });
           return res.data;

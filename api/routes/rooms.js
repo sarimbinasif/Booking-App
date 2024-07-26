@@ -15,7 +15,7 @@ router.post("/:hotelid", verifyAdmin, createRoom)
 
 //UPDTAE ROOM
 router.put("/:id", verifyAdmin, updateRoom)
-router.put("/availability/:id", updateRoomAvailability)
+router.put("/availability/:id", updateRoomAvailability) // room number id
 
 
 //DELETE ROOM
