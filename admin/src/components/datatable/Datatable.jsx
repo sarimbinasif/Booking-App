@@ -21,7 +21,7 @@ const Datatable = ({columns}) => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`/${path}/${id}`);
-      setList(list.filter((item) => item._id !== id));
+      setList(list.filter((item) => item._id !== id));//deleting user from mongoDB
     } catch (err) {}
   };
 

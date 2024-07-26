@@ -90,7 +90,7 @@ const Login = () => {
       console.log("Login response data:", res.data); // Log the response data
 
       if (res.data) {
-        dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+        dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
         navigate("/");
       } else {
         throw new Error("Invalid response data");
